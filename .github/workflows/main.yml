@@ -51,7 +51,7 @@ jobs:
   Release:
     needs: [Test, Coverage, Lint]
     if: |
-      github.ref == 'refs/heads/master' &&
+      github.ref == 'refs/heads/main' &&
       github.event.repository.fork == false
     runs-on: ubuntu-latest
     steps:
