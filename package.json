@@ -39,15 +39,5 @@
     "jest-cli": "^26.6.3",
     "marked": "^1.2.7",
     "semantic-release": "^17.3.6"
-  },
-  "release": {
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/changelog",
-      "@semantic-release/npm",
-      "@semantic-release/github",
-      "@semantic-release/git"
-    ]
   }
 }
