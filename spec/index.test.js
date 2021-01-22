@@ -21,24 +21,15 @@ describe("linkify-it", () => {
 		expect(marked("example.com")).toBe("<p>example.com</p>\n");
 	});
 
+	test("only domain", () => {
+		marked.use(linkify({}, {tlds: "onion"}));
+		expect(marked("example.com")).toBe("<p>example.com</p>\n");
+		expect(marked("example.onion")).toEqual(expect.stringMatching("href=\"http://example.onion\""));
+	});
+
 	test("add domain", () => {
-		marked.use(linkify({}, {}, (instance) => {
-			instance.tlds("onion", true);
-		}));
-		expect(marked("example.onion")).toEqual(expect.stringMatching("href=\"http://example.onion\""));
-	});
-
-	test("schema is function", () => {
-		marked.use(linkify((instance) => {
-			instance.tlds("onion", true);
-		}));
-		expect(marked("example.onion")).toEqual(expect.stringMatching("href=\"http://example.onion\""));
-	});
-
-	test("options is function", () => {
-		marked.use(linkify({}, (instance) => {
-			instance.tlds("onion", true);
-		}));
+		marked.use(linkify({}, {tlds: "onion", tldsKeepOld: true}));
+		expect(marked("example.com")).toEqual(expect.stringMatching("href=\"http://example.com\""));
 		expect(marked("example.onion")).toEqual(expect.stringMatching("href=\"http://example.onion\""));
 	});
 

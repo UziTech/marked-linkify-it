@@ -1,19 +1,16 @@
 const {inlineText} = require("./helpers.js");
 
-module.exports = function (schemas = {}, options = {}, preprocess = null) {
-	if (typeof schemas === "function" && preprocess === null) {
-		preprocess = schemas;
-		schemas = {};
-		options = {};
-	} else if (typeof options === "function" && preprocess === null) {
-		preprocess = options;
-		options = {};
-	}
+module.exports = function (schemas = {}, options = {}) {
 
 	const linkify = require("linkify-it")(schemas, options);
 
-	if (typeof preprocess === "function") {
-		preprocess(linkify);
+	const tlds = options.tlds;
+	delete options.tlds;
+	const tldsKeepOld = options.tldsKeepOld;
+	delete options.tldsKeepOld;
+
+	if (tlds) {
+		linkify.tlds(tlds, tldsKeepOld);
 	}
 
 	return {
