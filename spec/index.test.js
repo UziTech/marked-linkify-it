@@ -47,4 +47,9 @@ describe('linkify-it', () => {
     marked.use(linkify());
     expect(marked('at <example.com>')).toBe('<p>at <a href="http://example.com">example.com</a></p>\n');
   });
+
+  test('integration with other tokens', () => {
+    marked.use(linkify());
+    expect(marked('# **example.com**')).toBe('<h1 id="examplecom"><strong><a href="http://example.com">example.com</a></strong></h1>\n');
+  });
 });

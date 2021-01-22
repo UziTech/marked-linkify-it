@@ -3,7 +3,7 @@ module.exports = {
   clearMocks: true,
   // collectCoverage: true,
   collectCoverageFrom: [
-    'src/index.js'
+    'src/**/*.js'
   ],
   coverageDirectory: 'coverage',
   coverageThreshold: {

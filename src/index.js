@@ -1,16 +1,7 @@
-const { inlineText } = require('./helpers.js');
-
 module.exports = function(schemas = {}, options = {}) {
+  const inlineText = getInlineTextTokenizer();
   const linkify = require('linkify-it')(schemas, options);
-
-  const tlds = options.tlds;
-  delete options.tlds;
-  const tldsKeepOld = options.tldsKeepOld;
-  delete options.tldsKeepOld;
-
-  if (tlds) {
-    linkify.tlds(tlds, tldsKeepOld);
-  }
+  addTlds(linkify, options);
 
   return {
     tokenizer: {
@@ -56,3 +47,42 @@ module.exports = function(schemas = {}, options = {}) {
     }
   };
 };
+
+function getInlineTextTokenizer() {
+  let marked;
+  try {
+    marked = require('marked');
+  } catch (ex) {
+    // istanbul ignore next
+    ex.message = 'Unable to load "marked". Do you have it installed as a dependency?\n' + ex.message;
+    // istanbul ignore next
+    throw ex;
+  }
+
+  let inlineText;
+  try {
+    inlineText = marked.Tokenizer.prototype.inlineText;
+    // istanbul ignore if
+    if (typeof inlineText !== 'function') {
+      throw new Error(`"inlineText" is type of "${typeof inlineText}"`);
+    }
+  } catch (ex) {
+    // istanbul ignore next
+    ex.message = 'No "inlineText" tokenizer in installed marked version. Is the installed version of "marked" valid?\n' + ex.message;
+    // istanbul ignore next
+    throw ex;
+  }
+
+  return inlineText;
+}
+
+function addTlds(linkify, options) {
+  const tlds = options.tlds;
+  delete options.tlds;
+  const tldsKeepOld = options.tldsKeepOld;
+  delete options.tldsKeepOld;
+
+  if (tlds) {
+    linkify.tlds(tlds, tldsKeepOld);
+  }
+}
