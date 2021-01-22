@@ -1,8 +1,12 @@
 {
   "name": "marked-linkify-it",
   "version": "1.0.0",
-  "description": "marked using linkify-it for urls",
+  "description": "marked extension to use linkify-it for autolinks",
   "main": "src/index.js",
+  "keywords": [
+    "marked",
+    "linkify-it"
+  ],
   "scripts": {
     "test": "jest --verbose",
     "test:cover": "jest --coverage",
