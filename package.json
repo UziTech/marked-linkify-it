@@ -11,9 +11,7 @@
     "test": "jest --verbose",
     "test:cover": "jest --coverage",
     "lint": "eslint .",
-    "build": "npm run rollup",
-    "rollup": "npm run rollup:esm",
-    "rollup:esm": "rollup -c rollup.config.esm.js"
+    "build": "rollup -c rollup.config.esm.js"
   },
   "repository": {
     "type": "git",
