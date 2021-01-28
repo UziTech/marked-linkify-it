@@ -7,6 +7,10 @@ marked using [linkify-it](https://github.com/markdown-it/linkify-it) for urls
 const marked = require("marked");
 const linkify = require("marked-linkify-it");
 
+// or ES Module script
+// import marked from "https://cdn.jsdelivr.net/gh/markedjs/marked/lib/marked.esm.js";
+// import linkify from "https://cdn.jsdelivr.net/gh/UziTech/marked-linkify-it/lib/marked-linkify-it.esm.js";
+
 const schemas = {};
 const options = {};
 
