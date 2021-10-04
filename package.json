@@ -27,7 +27,7 @@
     "marked": "^1.0.0 || ^2.0.0"
   },
   "dependencies": {
-    "linkify-it": "^3.0.2"
+    "linkify-it": "^3.0.3"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.0",
