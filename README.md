@@ -1,4 +1,5 @@
 # marked-linkify-it
+
 marked using [linkify-it](https://github.com/markdown-it/linkify-it) for urls
 
 # Usage
@@ -23,6 +24,27 @@ marked("example.com");
 ## `schemas`
 
 see https://github.com/markdown-it/linkify-it#api
+
+*Note:* `#add()` doesn't work with this extension
+
+```JavaScript
+linkify.add('@', {...}) // Doesn't work, you need to pass a schema manually
+```
+
+Instead do:
+
+```JavaScript
+const schemas = {
+	'@': {
+		validate: function (text, pos, self) {
+			// ...
+		},
+		normalize: function (match) {
+			// ...
+		}
+	}
+};
+```
 
 ## `options`
 
