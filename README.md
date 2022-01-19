@@ -4,7 +4,7 @@ marked using [linkify-it](https://github.com/markdown-it/linkify-it) for urls
 # Usage
 
 ```js
-const marked = require("marked");
+const { marked } = require("marked");
 const linkify = require("marked-linkify-it");
 
 // or ES Module script
