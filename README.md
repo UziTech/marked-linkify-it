@@ -5,17 +5,17 @@ marked using [linkify-it](https://github.com/markdown-it/linkify-it) for urls
 # Usage
 
 ```js
-const { marked } = require("marked");
-const linkify = require("marked-linkify-it");
+import { marked } from "marked";
+import { markedLinkifyIt } from "marked-linkify-it";
 
-// or ES Module script
-// import marked from "https://cdn.jsdelivr.net/gh/markedjs/marked/lib/marked.esm.js";
-// import linkify from "https://cdn.jsdelivr.net/gh/UziTech/marked-linkify-it/lib/marked-linkify-it.esm.js";
+// or UMD script
+// <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+// <script src="https://cdn.jsdelivr.net/npm/marked-linkify-it/lib/index.umd.js"></script>
 
 const schemas = {};
 const options = {};
 
-marked.use(linkify(schemas, options));
+marked.use(markedLinkifyIt(schemas, options));
 
 marked("example.com");
 // <p><a href="http://example.com">example.com</a></p>
@@ -28,7 +28,7 @@ see https://github.com/markdown-it/linkify-it#api
 *Note:* `#add()` doesn't work with this extension
 
 ```JavaScript
-linkify.add('@', {...}) // Doesn't work, you need to pass a schema manually
+markedLinkifyIt.add('@', {...}) // Doesn't work, you need to pass a schema manually
 ```
 
 Instead do:
