@@ -6,7 +6,7 @@ marked using [linkify-it](https://github.com/markdown-it/linkify-it) for urls
 
 ```js
 import { marked } from "marked";
-import { markedLinkifyIt } from "marked-linkify-it";
+import markedLinkifyIt from "marked-linkify-it";
 
 // or UMD script
 // <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>

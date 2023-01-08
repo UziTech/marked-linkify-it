@@ -1,6 +1,6 @@
 import LinkifyIt from 'linkify-it';
 
-export function markedLinkifyIt(schemas = {}, options = {}) {
+export default function markedLinkifyIt(schemas = {}, options = {}) {
   const linkify = new LinkifyIt(schemas, options);
   addTlds(linkify, options);
 

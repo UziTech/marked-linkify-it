@@ -1,5 +1,5 @@
 import { marked } from 'marked';
-import { markedLinkifyIt } from '../src/index.js';
+import markedLinkifyIt from '../src/index.js';
 
 describe('linkify-it', () => {
   beforeEach(() => {
