@@ -1,20 +1,28 @@
-const LinkifyIt = require('linkify-it');
-const { inlineText } = require('./helpers.js');
+import LinkifyIt from 'linkify-it';
 
-module.exports = function(schemas = {}, options = {}) {
+export function markedLinkifyIt(schemas = {}, options = {}) {
   const linkify = new LinkifyIt(schemas, options);
   addTlds(linkify, options);
 
   return {
-    tokenizer: {
-      autolink(src) {
-        const match = linkify.match(src);
+    extensions: [{
+      name: 'autolink',
+      level: 'inline',
+      start: (src) => {
+        const link = getNextLink(linkify, src);
 
-        if (!match || !match.length) {
+        if (!link) {
           return;
         }
 
-        const link = match[0];
+        return link.index;
+      },
+      tokenizer(src) {
+        const link = getNextLink(linkify, src);
+
+        if (!link) {
+          return;
+        }
 
         let raw;
         if (link.index === 0) {
@@ -23,32 +31,37 @@ module.exports = function(schemas = {}, options = {}) {
           raw = `<${link.raw}>`;
         }
 
-        if (raw) {
-          return {
-            type: 'link',
-            raw,
-            text: link.text,
-            href: link.url,
-            tokens: [
-              {
-                type: 'text',
-                raw: link.text,
-                text: link.text
-              }
-            ]
-          };
+        if (!raw) {
+          return;
         }
-      },
-      inlineText(src, ...args) {
-        const match = linkify.match(src);
-        if (match && match.length > 0) {
-          src = src.substring(0, match[0].index);
-        }
-        return inlineText.call(this, src, ...args);
+
+        return {
+          type: 'link',
+          raw,
+          text: link.text,
+          href: link.url,
+          tokens: [
+            {
+              type: 'text',
+              raw: link.text,
+              text: link.text
+            }
+          ]
+        };
       }
-    }
+    }]
   };
-};
+}
+
+function getNextLink(linkify, src) {
+  const match = linkify.match(src);
+
+  if (!match || !match.length) {
+    return;
+  }
+
+  return match[0];
+}
 
 function addTlds(linkify, options) {
   const tlds = options.tlds;
