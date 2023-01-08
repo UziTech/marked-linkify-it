@@ -12,11 +12,7 @@ export function markedLinkifyIt(schemas = {}, options = {}) {
         const link = getNextLink(linkify, src);
 
         if (!link) {
-          return -1;
-        }
-
-        if (src.charAt(link.index - 1) === '<' && src.charAt(link.lastIndex) === '>') {
-          return link.index - 1;
+          return;
         }
 
         return link.index;
