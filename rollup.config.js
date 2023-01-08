@@ -1,4 +1,5 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 
 export default [
   {
@@ -9,7 +10,8 @@ export default [
       format: 'umd'
     },
     plugins: [
-      nodeResolve()
+      nodeResolve(),
+      commonjs()
     ]
   },
   {
@@ -19,7 +21,8 @@ export default [
       format: 'cjs'
     },
     plugins: [
-      nodeResolve()
+      nodeResolve(),
+      commonjs()
     ]
   }
 ];
