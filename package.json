@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/UziTech/marked-linkify-it#readme",
   "peerDependencies": {
-    "marked": "^4.3.0"
+    "marked": "^4 || ^5"
   },
   "dependencies": {
     "linkify-it": "^4.0.1"
