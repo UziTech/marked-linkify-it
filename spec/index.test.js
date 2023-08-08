@@ -50,6 +50,6 @@ describe('linkify-it', () => {
 
   test('integration with other tokens', () => {
     marked.use(markedLinkifyIt());
-    expect(marked('# **example.com**')).toBe('<h1 id="examplecom"><strong><a href="http://example.com">example.com</a></strong></h1>\n');
+    expect(marked('# **example.com**')).toBe('<h1><strong><a href="http://example.com">example.com</a></strong></h1>\n');
   });
 });

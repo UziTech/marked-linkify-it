@@ -1,4 +1,5 @@
 import type LinkifyIt from "linkify-it";
+import type { MarkedExtension } from "marked";
 
 export default function markedLinkifyIt(
   schemas?: LinkifyIt.SchemaRules,
@@ -6,4 +7,4 @@ export default function markedLinkifyIt(
     tlds?: string | string[];
     tldsKeepOld?: boolean;
   }
-): import("marked").marked.MarkedExtension;
+): MarkedExtension;
