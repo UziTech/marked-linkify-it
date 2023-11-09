@@ -18,6 +18,10 @@ export default function markedLinkifyIt(schemas = {}, options = {}) {
         return link.index;
       },
       tokenizer(src) {
+        if (this.lexer.state.inLink) {
+          return;
+        }
+
         const link = getNextLink(linkify, src);
 
         if (!link) {
