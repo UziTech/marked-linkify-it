@@ -39,21 +39,21 @@
   },
   "homepage": "https://github.com/UziTech/marked-linkify-it#readme",
   "peerDependencies": {
-    "marked": ">=4 <10"
+    "marked": ">=4 <11"
   },
   "dependencies": {
     "@types/linkify-it": "^3.0.5",
     "linkify-it": "^4.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.2",
-    "@babel/preset-env": "^7.23.2",
+    "@babel/core": "^7.23.3",
+    "@babel/preset-env": "^7.23.3",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^11.1.0",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^9.2.2",
+    "@semantic-release/github": "^9.2.3",
     "@semantic-release/npm": "^11.0.1",
     "@semantic-release/release-notes-generator": "^12.1.0",
     "@types/marked": "^6.0.0",
@@ -61,10 +61,10 @@
     "eslint": "^8.53.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.29.0",
-    "eslint-plugin-n": "^16.3.0",
+    "eslint-plugin-n": "^16.3.1",
     "eslint-plugin-promise": "^6.1.1",
     "jest-cli": "^29.7.0",
-    "marked": "^9.1.5",
+    "marked": "^10.0.0",
     "rollup": "^4.3.0",
     "semantic-release": "^22.0.7",
     "tsd": "^0.29.0"
