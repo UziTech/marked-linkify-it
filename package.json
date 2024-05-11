@@ -42,7 +42,7 @@
     "marked": ">=4 <13"
   },
   "dependencies": {
-    "@types/linkify-it": "^3.0.5",
+    "@types/linkify-it": "^5.0.0",
     "linkify-it": "^5.0.0"
   },
   "devDependencies": {
