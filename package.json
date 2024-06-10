@@ -46,7 +46,7 @@
     "linkify-it": "^5.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.6",
+    "@babel/core": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
