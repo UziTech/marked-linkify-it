@@ -7,22 +7,22 @@ export default [
     output: {
       name: 'markedLinkifyIt',
       file: 'lib/index.umd.js',
-      format: 'umd'
+      format: 'umd',
     },
     plugins: [
       nodeResolve(),
-      commonjs()
-    ]
+      commonjs(),
+    ],
   },
   {
     input: 'src/index.js',
     output: {
       file: 'lib/index.cjs',
-      format: 'cjs'
+      format: 'cjs',
     },
     plugins: [
       nodeResolve(),
-      commonjs()
-    ]
-  }
+      commonjs(),
+    ],
+  },
 ];
