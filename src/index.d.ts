@@ -1,5 +1,5 @@
-import type LinkifyIt from "linkify-it";
-import type { MarkedExtension } from "marked";
+import type LinkifyIt from 'linkify-it';
+import type { MarkedExtension } from 'marked';
 
 export default function markedLinkifyIt(
   schemas?: LinkifyIt.SchemaRules,
