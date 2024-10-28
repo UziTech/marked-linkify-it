@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
-    "@babel/preset-env": "^7.25.8",
+    "@babel/preset-env": "^7.26.0",
     "@markedjs/eslint-config": "^1.0.7",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
