@@ -6,5 +6,5 @@ export default function markedLinkifyIt(
   options?: LinkifyIt.Options & {
     tlds?: string | string[];
     tldsKeepOld?: boolean;
-  }
+  },
 ): MarkedExtension;
