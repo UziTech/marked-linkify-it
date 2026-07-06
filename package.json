@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@types/linkify-it": "^5.0.0",
-    "linkify-it": "^5.0.1"
+    "linkify-it": "^5.0.2"
   },
   "devDependencies": {
     "@babel/core": "^8.0.1",
