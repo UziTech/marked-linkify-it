@@ -42,7 +42,6 @@
     "marked": ">=4 <19"
   },
   "dependencies": {
-    "@types/linkify-it": "^5.0.0",
     "linkify-it": "^6.0.0"
   },
   "devDependencies": {

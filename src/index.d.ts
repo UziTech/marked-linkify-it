@@ -1,10 +1,10 @@
-import type LinkifyIt from 'linkify-it';
+import type { LinkifyOptions, SchemaOpts } from 'linkify-it';
 import type { MarkedExtension } from 'marked';
 
 export default function markedLinkifyIt(
-  schemas?: LinkifyIt.SchemaRules,
-  options?: LinkifyIt.Options & {
+  options?: LinkifyOptions & {
     tlds?: string | string[];
     tldsKeepOld?: boolean;
+    schemas?: Record<string, SchemaOpts | null>;
   },
 ): MarkedExtension;

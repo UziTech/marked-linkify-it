@@ -8,23 +8,34 @@ describe('linkify-it', () => {
   });
 
   test('add schemas', () => {
-    const marked = new Marked(markedLinkifyIt({ 'test:': 'http:' }));
+    const marked = new Marked(markedLinkifyIt({
+      schemas: {
+        'test:': {
+          validate: (text, pos, self) => {
+            return text.startsWith('test:') ? text.length : 0;
+          },
+          normalize: (match, self) => {
+            return self.normalize(match);
+          },
+        },
+      },
+    }));
     expect(marked.parse('test://example.com')).toBe('<p><a href="test://example.com">test://example.com</a></p>\n');
   });
 
   test('add options', () => {
-    const marked = new Marked(markedLinkifyIt({}, { fuzzyLink: false }));
+    const marked = new Marked(markedLinkifyIt({ fuzzyLink: false }));
     expect(marked.parse('example.com')).toBe('<p>example.com</p>\n');
   });
 
   test('only domain', () => {
-    const marked = new Marked(markedLinkifyIt({}, { tlds: 'onion' }));
+    const marked = new Marked(markedLinkifyIt({ tlds: 'onion' }));
     expect(marked.parse('example.com')).toBe('<p>example.com</p>\n');
     expect(marked.parse('example.onion')).toEqual(expect.stringMatching('href="http://example.onion"'));
   });
 
   test('add domain', () => {
-    const marked = new Marked(markedLinkifyIt({}, { tlds: 'onion', tldsKeepOld: true }));
+    const marked = new Marked(markedLinkifyIt({ tlds: 'onion', tldsKeepOld: true }));
     expect(marked.parse('example.com')).toEqual(expect.stringMatching('href="http://example.com"'));
     expect(marked.parse('example.onion')).toEqual(expect.stringMatching('href="http://example.onion"'));
   });
