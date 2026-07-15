@@ -23,9 +23,15 @@ marked("example.com");
 
 ## `options`
 
-see https://github.com/markdown-it/linkify-it#api
+see <https://github.com/markdown-it/linkify-it#api>
 
-linkify options plus the following additional options:
+All linkify-it options plus the following additional options:
+
+### `fuzzyLink`
+
+`Boolean; Default: true`
+
+`true` to enable recognition of URLs without schema (e.g. `example.com`). Note that this differs from linkify-it's default of `false`.
 
 ### `tldsKeepOld`
 
@@ -35,15 +41,9 @@ linkify options plus the following additional options:
 
 ### `schemas`
 
-A map of schemas to add to linkify-it
+`Object; Default: undefined`
 
-*Note:* `#add()` doesn't work with this extension
-
-```JavaScript
-markedLinkifyIt.add('@', {...}) // Doesn't work, you need to pass a schema in options
-```
-
-Instead do:
+A map of schemas to add to linkify-it. linkify-it supports `http(s)://...` , `ftp://...`, `mailto:...` & `//...` links by default.
 
 ```JavaScript
 const options = {
