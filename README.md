@@ -5,17 +5,19 @@ marked using [linkify-it](https://github.com/markdown-it/linkify-it) for urls
 ## Usage
 
 ```js
-import { marked } from "marked";
+import { Marked } from "marked";
 import markedLinkifyIt from "marked-linkify-it";
 
 // or UMD script
 // <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
 // <script src="https://cdn.jsdelivr.net/npm/marked-linkify-it/lib/index.umd.js"></script>
 
-const options = {};
+const options = {
+  // see options below
+};
 
+const marked = new Marked();
 marked.use(markedLinkifyIt(options));
-
 marked.parse("example.com");
 // <p><a href="http://example.com">example.com</a></p>
 ```
