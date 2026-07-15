@@ -12,12 +12,11 @@ import markedLinkifyIt from "marked-linkify-it";
 // <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
 // <script src="https://cdn.jsdelivr.net/npm/marked-linkify-it/lib/index.umd.js"></script>
 
-const schemas = {};
 const options = {};
 
-marked.use(markedLinkifyIt(schemas, options));
+marked.use(markedLinkifyIt(options));
 
-marked("example.com");
+marked.parse("example.com");
 // <p><a href="http://example.com">example.com</a></p>
 ```
 
@@ -33,6 +32,12 @@ All linkify-it options plus the following additional options:
 
 `true` to enable recognition of URLs without schema (e.g. `example.com`). Note that this differs from linkify-it's default of `false`.
 
+### `tlds`
+
+`String|String[]; Default: undefined`
+
+A list of TLDs (top-level domains) to add or replace in the domain list.
+
 ### `tldsKeepOld`
 
 `Boolean; Default: false`
@@ -47,7 +52,7 @@ A map of schemas to add to linkify-it. linkify-it supports `http(s)://...` , `ft
 
 ```JavaScript
 const options = {
-  schemas = {
+  schemas: {
     '@': {
       validate: function (text, pos, self) {
         // ...
