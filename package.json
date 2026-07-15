@@ -26,6 +26,7 @@
     "test:cover": "jest --coverage",
     "test:types": "tsd -f spec/index.test-d.ts -t src/index.d.ts",
     "lint": "eslint",
+    "format": "eslint --fix",
     "build": "rollup -c rollup.config.js"
   },
   "repository": {

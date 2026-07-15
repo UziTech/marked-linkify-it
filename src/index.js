@@ -1,5 +1,9 @@
 import { LinkifyIt } from 'linkify-it';
 
+const defaultOptions = {
+  fuzzyLink: true,
+};
+
 export default function markedLinkifyIt(options = {}) {
   const {
     tlds,
@@ -7,7 +11,7 @@ export default function markedLinkifyIt(options = {}) {
     schemas,
     ...linkifyItOptions
   } = options;
-  const linkify = new LinkifyIt(linkifyItOptions);
+  const linkify = new LinkifyIt({ ...defaultOptions, ...linkifyItOptions });
   addTlds(linkify, tlds, tldsKeepOld);
   addSchemas(linkify, schemas);
 
@@ -74,9 +78,9 @@ function getNextLink(linkify, src) {
   return match[0];
 }
 
-function addTlds(linkify, tlds, keepOld) {
+function addTlds(linkify, tlds, tldsKeepOld) {
   if (tlds) {
-    linkify.tlds(tlds, keepOld);
+    linkify.tlds(tlds, tldsKeepOld);
   }
 }
 
