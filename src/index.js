@@ -1,8 +1,19 @@
-import LinkifyIt from 'linkify-it';
+import { LinkifyIt } from 'linkify-it';
 
-export default function markedLinkifyIt(schemas = {}, options = {}) {
-  const linkify = new LinkifyIt(schemas, options);
-  addTlds(linkify, options);
+const defaultOptions = {
+  fuzzyLink: true,
+};
+
+export default function markedLinkifyIt(options = {}) {
+  const {
+    tlds,
+    tldsKeepOld,
+    schemas,
+    ...linkifyItOptions
+  } = options;
+  const linkify = new LinkifyIt({ ...defaultOptions, ...linkifyItOptions });
+  addTlds(linkify, tlds, tldsKeepOld);
+  addSchemas(linkify, schemas);
 
   return {
     extensions: [{
@@ -67,13 +78,16 @@ function getNextLink(linkify, src) {
   return match[0];
 }
 
-function addTlds(linkify, options) {
-  const tlds = options.tlds;
-  delete options.tlds;
-  const tldsKeepOld = options.tldsKeepOld;
-  delete options.tldsKeepOld;
-
+function addTlds(linkify, tlds, tldsKeepOld) {
   if (tlds) {
     linkify.tlds(tlds, tldsKeepOld);
+  }
+}
+
+function addSchemas(linkify, schemas) {
+  if (schemas) {
+    for (const [schema, config] of Object.entries(schemas)) {
+      linkify.add(schema, config);
+    }
   }
 }

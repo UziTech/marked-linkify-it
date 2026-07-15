@@ -26,6 +26,7 @@
     "test:cover": "jest --coverage",
     "test:types": "tsd -f spec/index.test-d.ts -t src/index.d.ts",
     "lint": "eslint",
+    "format": "eslint --fix",
     "build": "rollup -c rollup.config.js"
   },
   "repository": {
@@ -42,8 +43,7 @@
     "marked": ">=4 <19"
   },
   "dependencies": {
-    "@types/linkify-it": "^5.0.0",
-    "linkify-it": "^5.0.2"
+    "linkify-it": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^8.0.1",
