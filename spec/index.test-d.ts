@@ -7,10 +7,14 @@ const options = {
   fuzzyLink: true,
   fuzzyEmail: true,
   fuzzyIP: true,
-  '---': true,
   urlAuth: true,
   maxLength: 10000,
-  schemas: {},
+  schemas: {
+    'test:': {
+      validate: () => 0,
+      normalize: () => '',
+    },
+  },
 };
 
 marked.use(markedLinkifyIt(options));

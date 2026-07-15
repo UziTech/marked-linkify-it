@@ -2,7 +2,7 @@
 
 marked using [linkify-it](https://github.com/markdown-it/linkify-it) for urls
 
-# Usage
+## Usage
 
 ```js
 import { marked } from "marked";
@@ -21,45 +21,41 @@ marked("example.com");
 // <p><a href="http://example.com">example.com</a></p>
 ```
 
-## `schemas`
-
-see https://github.com/markdown-it/linkify-it#api
-
-*Note:* `#add()` doesn't work with this extension
-
-```JavaScript
-markedLinkifyIt.add('@', {...}) // Doesn't work, you need to pass a schema manually
-```
-
-Instead do:
-
-```JavaScript
-const schemas = {
-	'@': {
-		validate: function (text, pos, self) {
-			// ...
-		},
-		normalize: function (match) {
-			// ...
-		}
-	}
-};
-```
-
 ## `options`
 
 see https://github.com/markdown-it/linkify-it#api
 
 linkify options plus the following additional options:
 
-### `tlds`
-
-`String|String[]`
-
-replace or add tlds for fuzzy links/
-
 ### `tldsKeepOld`
 
 `Boolean; Default: false`
 
-`true` to add domains instead of replacing domain list.
+`true` to add domains in `tlds` option instead of replacing domain list.
+
+### `schemas`
+
+A map of schemas to add to linkify-it
+
+*Note:* `#add()` doesn't work with this extension
+
+```JavaScript
+markedLinkifyIt.add('@', {...}) // Doesn't work, you need to pass a schema in options
+```
+
+Instead do:
+
+```JavaScript
+const options = {
+  schemas = {
+    '@': {
+      validate: function (text, pos, self) {
+        // ...
+      },
+      normalize: function (match) {
+        // ...
+      }
+    }
+  }
+};
+```

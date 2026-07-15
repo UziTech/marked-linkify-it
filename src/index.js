@@ -1,9 +1,5 @@
 import { LinkifyIt } from 'linkify-it';
 
-const defaultOptions = {
-  fuzzyLink: true,
-};
-
 export default function markedLinkifyIt(options = {}) {
   const {
     tlds,
@@ -11,7 +7,7 @@ export default function markedLinkifyIt(options = {}) {
     schemas,
     ...linkifyItOptions
   } = options;
-  const linkify = new LinkifyIt({ ...defaultOptions, ...linkifyItOptions });
+  const linkify = new LinkifyIt(linkifyItOptions);
   addTlds(linkify, tlds, tldsKeepOld);
   addSchemas(linkify, schemas);
 
