@@ -43,7 +43,7 @@
     "marked": ">=4 <19"
   },
   "dependencies": {
-    "linkify-it": "^6.0.0"
+    "linkify-it": "^6.1.0"
   },
   "devDependencies": {
     "@babel/core": "^8.0.1",
